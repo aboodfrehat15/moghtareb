@@ -58,7 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   'images/WhatsApp Image 2024-01-28 at 17.51.53_a352b232.jpg',
                   height: 150,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text(
@@ -66,14 +66,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   style: GoogleFonts.robotoCondensed(
                       fontSize: 40, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text(
                   'يا أهلا وسهلا',
                   style: GoogleFonts.robotoCondensed(fontSize: 18),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Padding(
@@ -86,7 +86,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextField(
                         controller: _emailController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Email',
                         ),
@@ -94,7 +94,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Padding(
@@ -108,7 +108,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: TextField(
                         controller: _passwordController,
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Password',
                         ),
@@ -116,7 +116,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Padding(
@@ -130,7 +130,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: TextField(
                         controller: _confirmPasswordController,
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Confirm Password',
                         ),
@@ -138,7 +138,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Padding(
@@ -146,7 +146,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: GestureDetector(
                     onTap: signUp,
                     child: Container(
-                      padding: EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                           color: Colors.green,
                           borderRadius: BorderRadius.circular(12)),
@@ -161,7 +161,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text(

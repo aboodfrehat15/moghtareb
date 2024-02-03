@@ -13,8 +13,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final List<Widget> _pages = [
     HomeScreen(),
+    NewsFeedScreen(),
     AccountScreen(),
-    SettingsScreen(),
+    ServiceScreen(),
   ];
 
   @override
@@ -44,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Icons.settings),
             label: 'Settings',
           ),
+          BottomNavigationBarItem(icon: Icon(Icons.local_offer_outlined))
         ],
       ),
     );
@@ -68,7 +70,7 @@ class AccountScreen extends StatelessWidget {
   }
 }
 
-class SettingsScreen extends StatelessWidget {
+class NewsFeedScreen extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
@@ -84,6 +86,15 @@ class SettingsScreen extends StatelessWidget {
               FirebaseAuth.instance.signOut();
             })
       ]),
+    );
+  }
+}
+
+class ServiceScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Service Screen'),
     );
   }
 }
