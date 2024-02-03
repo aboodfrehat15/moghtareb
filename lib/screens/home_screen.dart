@@ -45,7 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Icons.settings),
             label: 'Settings',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.local_offer_outlined))
+          BottomNavigationBarItem(
+              icon: Icon(Icons.local_offer_outlined), label: 'Service')
         ],
       ),
     );
