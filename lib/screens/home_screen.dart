@@ -14,8 +14,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _pages = [
     HomeScreen(),
     NewsFeedScreen(),
-    AccountScreen(),
     ServiceScreen(),
+    AccountScreen(),
   ];
 
   @override
@@ -24,6 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Flutter Bottom Navigation'),
       ),
+      drawer: MyDrawer(),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -34,20 +35,26 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(
+              Icons.home,
+            ),
             label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.newspaper),
+            label: 'News Feed',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.local_offer_outlined),
+            label: 'Service',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
             label: 'Account',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.local_offer_outlined), label: 'Service')
         ],
+        unselectedItemColor: Colors.yellow,
+        selectedItemColor: Colors.green,
       ),
     );
   }
@@ -63,21 +70,13 @@ class HomeScreen extends StatelessWidget {
 }
 
 class AccountScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Account Screen'),
-    );
-  }
-}
-
-class NewsFeedScreen extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
+      body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [Text(user.email!), Text('مرحبا')],
         ),
         MaterialButton(
@@ -91,11 +90,69 @@ class NewsFeedScreen extends StatelessWidget {
   }
 }
 
+class NewsFeedScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('News Feed Screen'),
+    );
+  }
+}
+
 class ServiceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text('Service Screen'),
+    );
+  }
+}
+
+class MyDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
+            child: Text(
+              'Drawer Header',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home'),
+            onTap: () {
+              // Navigate to the home screen or perform any action
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.account_circle),
+            title: Text('Profile'),
+            onTap: () {
+              // Navigate to the profile screen or perform any action
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Settings'),
+            onTap: () {
+              // Navigate to the settings screen or perform any action
+              Navigator.pop(context);
+            },
+          ),
+        ],
+      ),
     );
   }
 }
