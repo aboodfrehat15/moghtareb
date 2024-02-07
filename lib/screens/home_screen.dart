@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -111,6 +112,7 @@ class ServiceScreen extends StatelessWidget {
 class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -125,6 +127,16 @@ class MyDrawer extends StatelessWidget {
                 color: Colors.white,
                 fontSize: 24,
               ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.lightbulb),
+            title: Text('Dark Mode'),
+            trailing: Switch(
+              value: themeProvider.themeMode == ThemeModeType.Dark,
+              onChanged: (value) {
+                themeProvider.toggleTheme();
+              },
             ),
           ),
           ListTile(
@@ -154,5 +166,20 @@ class MyDrawer extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+enum ThemeModeType { Light, Dark }
+
+class ThemeProvider extends ChangeNotifier {
+  ThemeModeType _themeMode = ThemeModeType.Light;
+
+  ThemeModeType get themeMode => _themeMode;
+
+  void toggleTheme() {
+    _themeMode = _themeMode == ThemeModeType.Light
+        ? ThemeModeType.Dark
+        : ThemeModeType.Light;
+    notifyListeners();
   }
 }
