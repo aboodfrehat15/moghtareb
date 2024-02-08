@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart'
     show Firebase, FirebaseOptions;
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:moghtareb_off/firebase_options.dart';
 import 'package:moghtareb_off/screens/auth.dart';
 import 'package:moghtareb_off/screens/home_screen.dart';
@@ -55,6 +56,17 @@ class MyApp extends StatelessWidget {
         'homeScreen': (context) => HomeScreen(),
         '/': (context) => const Auth(),
       },
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: const [
+        Locale('ar', 'SA'),
+        Locale('en', 'US'), // English (United States)
+        Locale('es', 'ES'), // Spanish (Spain)
+        // Add more locales as needed
+      ],
     );
   }
 }
